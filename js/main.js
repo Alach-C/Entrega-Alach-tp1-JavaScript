@@ -1,4 +1,3 @@
-
 const turnos = [
   { nombre: "Lunes 18 a 20", cupo: 6 },
   { nombre: "Martes 9 a 11", cupo: 6 },
@@ -9,26 +8,40 @@ const turnos = [
 
 let reservas = [];
 
-
 function verificarAcceso() {
   const tieneCuenta = confirm("¿Tenés cuenta creada?");
   const tienePago = confirm("¿Tenés el curso pago?");
   return tieneCuenta && tienePago;
 }
 
+function contarReservasAlumno(nombreAlumno) {
+  let contador = 0;
+  for (let i = 0; i < reservas.length; i++) {
+    if (reservas[i].startsWith(nombreAlumno)) {
+      contador++;
+    }
+  }
+  return contador;
+}
 
 function reservarTurno(nombreAlumno, indiceTurno) {
+  let reservasAlumno = contarReservasAlumno(nombreAlumno);
+
+  if (reservasAlumno >= 4) {
+    alert("Ya alcanzaste el máximo de 4 turnos este mes.");
+    return false;
+  }
+
   if (turnos[indiceTurno].cupo > 0) {
     reservas.push(`${nombreAlumno} - ${turnos[indiceTurno].nombre}`);
     turnos[indiceTurno].cupo--;
-    alert(` Reserva confirmada: ${nombreAlumno} en ${turnos[indiceTurno].nombre}`);
+    alert(`Reserva confirmada: ${nombreAlumno} en ${turnos[indiceTurno].nombre}`);
     return true;
   } else {
-    alert(" Ese turno ya no tiene cupo disponible.");
+    alert("Ese turno ya no tiene cupo disponible.");
     return false;
   }
 }
-
 
 alert("Bienvenida al turnero de clases de cerámica");
 
@@ -48,18 +61,18 @@ if (verificarAcceso()) {
     if (opcion >= 0 && opcion < turnos.length) {
       reservarTurno(nombre, opcion);
     } else {
-      alert(" Opción inválida. Intentá de nuevo.");
+      alert("Opción inválida. Intentá de nuevo.");
     }
 
     continuar = confirm("¿Querés registrar otro turno?");
   }
 
-  alert("Gracias por usar el turnero ");
-  console.log(" Lista final de reservas:");
+  alert("Gracias por usar el turnero");
+  console.log("Lista final de reservas:");
   for (let i = 0; i < reservas.length; i++) {
     console.log(reservas[i]);
   }
 
 } else {
-  alert(" Para reservar turno necesitás tener cuenta creada y el curso pago.");
+  alert("Para reservar turno necesitás tener cuenta creada y el curso pago.");
 }
