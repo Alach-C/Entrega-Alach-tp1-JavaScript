@@ -1,0 +1,14 @@
+[
+  {
+    "id": "pack_4",
+    "nombre": "Pack 4 clases",
+    "precio": 53000,
+    "descripcion": "Ideal para quienes vienen regularmente"
+  },
+  {
+    "id": "suelta",
+    "nombre": "Clase suelta",
+    "precio": 14500,
+    "descripcion": "Para cuando podés venir una vez"
+  }
+]

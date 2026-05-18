@@ -1,0 +1,17 @@
+[
+  {
+    "dia_numero": 1,
+    "dia_nombre": "Lunes",
+    "franjas": ["18:00 a 20:00"]
+  },
+  {
+    "dia_numero": 2,
+    "dia_nombre": "Martes",
+    "franjas": ["16:00 a 18:00", "18:00 a 20:00"]
+  },
+  {
+    "dia_numero": 3,
+    "dia_nombre": "Miércoles",
+    "franjas": ["16:00 a 18:00", "18:00 a 20:00"]
+  }
+]
